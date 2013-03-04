@@ -8,8 +8,7 @@
 #include "GalagaGame.h"
 
 GalagaGame::GalagaGame() {
-	stateId = STATE_NULL;
-	nextState = STATE_NULL;
+	currentState = new Title();
 
 }
 

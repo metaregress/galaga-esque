@@ -14,7 +14,7 @@ TTFText::TTFText(std::string initialText, int textSize, char* fontFile) {
 
 	size = textSize;
 
-	SDL_Color color = { 0, 0, 0 };
+	SDL_Color color = { 0, 255, 0 };
 
 	textColor = color;
 

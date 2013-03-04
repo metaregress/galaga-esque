@@ -36,12 +36,6 @@ class Game {
 	static const int SCREEN_BPP = 32;
 	static const int FRAMES_PER_SECOND = 60;
 
-	//Game states
-	enum GameStates {
-		STATE_NULL,
-		STATE_EXIT,
-	};
-
 	//The frame rate regulator
 	Timer fpsTimer;
 
@@ -53,12 +47,6 @@ class Game {
 	int nextState;
 
 	GameState *currentState;
-
-	bool quit;
-
-	void set_next_state(int newState);
-
-	void changeState();
 
 	bool initGraphics();
 	void clearScreen();

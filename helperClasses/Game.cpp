@@ -13,7 +13,6 @@
 Game::Game() {
 	//initialize graphics
 	initGraphics();
-	stateId = STATE_NULL;
 }
 
 Game::~Game() {
@@ -23,7 +22,7 @@ Game::~Game() {
 
 void Game::clearScreen(){
 	//Fill the screen white
-	SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0xFF, 0xFF, 0xFF ) );
+	SDL_FillRect( screen, &screen->clip_rect, SDL_MapRGB( screen->format, 0x00, 0x00, 0x00 ) );
 }
 
 std::string Game::numberToString( int number ){
@@ -69,7 +68,8 @@ int Game::runGame(){
 	//can haz event loop
 	fpsTimer = Timer();
 	clearScreen();
-	while( stateId != STATE_EXIT ){
+
+	while( currentState != NULL ){
 		fpsTimer.start();
 		currentState->handleEvents();
 
@@ -77,7 +77,9 @@ int Game::runGame(){
 
 		currentState = currentState->getNextState();
 
-		currentState->render();
+		if(currentState!=NULL){
+			currentState->render(screen);
+		}
 
 		//Update the screen
 		if( SDL_Flip( screen ) == -1 ) {
@@ -139,8 +141,4 @@ bool Game::checkCollision( SDL_Rect A, SDL_Rect B ) {
 
 	//If none of the sides from A are outside B
 	return true;
-}
-
-void Game::changeState(){
-
 }

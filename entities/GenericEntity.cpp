@@ -39,6 +39,10 @@ void GenericEntity::setCoords(int x, int y){
 	box.y = y;
 }
 
+void GenericEntity::display(SDL_Surface *destination){
+	image.displayImage(box.x, box.y, destination);
+}
+
 SDL_Rect GenericEntity::getRect(){
 	return box;
 }

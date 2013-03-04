@@ -34,6 +34,8 @@ Button::Button(int x, int y, int width, int height, std::string buttonText){
 
 	char* fontName = "Roboto-Medium.ttf";
 	text = TTFText(buttonText, 28, fontName);
+
+	image = Image();
 }
 
 bool Button::handleEvent(SDL_Event event){
@@ -74,7 +76,7 @@ int Button::setImage(std::string filename){
 }
 
 void Button::displayArea(SDL_Surface* destination){
-	SDL_FillRect( destination, &box, SDL_MapRGB( destination->format, 0x00, 0x00, 0x00 ) );
+	SDL_FillRect( destination, &box, SDL_MapRGB( destination->format, 0xFF, 0xFF, 0xFF ) );
 }
 
 void Button::displayElements(SDL_Surface* destination){

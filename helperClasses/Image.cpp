@@ -33,7 +33,7 @@ void Image::loadImage( std::string filename ){
 		//If the image was optimized just fine
 		if( optimizedImage != NULL ) {
 			//Map the color key
-			Uint32 colorkey = SDL_MapRGB( optimizedImage->format, 0xFF, 0xFF, 0xFF );
+			Uint32 colorkey = SDL_MapRGB( optimizedImage->format, 0x00, 0x00, 0x00 );
 			SDL_SetColorKey( optimizedImage, SDL_SRCCOLORKEY, colorkey );
 		}
 		SDL_FreeSurface( loadedImage );

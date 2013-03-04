@@ -9,22 +9,12 @@
 #define GALAGAGAME_H_
 
 #include "helperClasses/Game.h"
+#include "states/Title.h"
 
 class GalagaGame : public Game{
 public:
 	GalagaGame();
 	virtual ~GalagaGame();
-
-protected:
-	//Game states
-	enum GameStates {
-		STATE_NULL,
-		STATE_EXIT,
-		STATE_TITLE,
-		STATE_LEVEL_1,
-		STATE_GAME_OVER,
-	};
-
 };
 
 #endif /* GALAGAGAME_H_ */
