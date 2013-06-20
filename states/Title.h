@@ -10,6 +10,7 @@
 
 #include "GameState.h"
 #include "LevelOne.h"
+#include "SDL/SDL_mixer.h"
 #include "../helperClasses/TTFText.h"
 #include "../helperClasses/Button.h"
 
@@ -35,6 +36,8 @@ protected:
 	TTFText titleText;
 	Button playGame;
 	Button quitButton;
+
+	Mix_Chunk *startSound;
 };
 
 #endif /* TITLE_H_ */

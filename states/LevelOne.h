@@ -9,27 +9,27 @@
 #define LEVELONE_H_
 
 #include "GameState.h"
+#include "GenericLevel.h"
 #include "../entities/GenericEntity.h"
 #include "../entities/PlayerEntity.h"
 #include "../entities/Bullet.h"
 #include "../entities/StraightDownEnemy.h"
+#include "../entities/SpiralEnemy.h"
+#include "../entities/LevelOneBoss.h"
 
 #include "../helperClasses/Image.h"
 #include "../helperClasses/TTFText.h"
+#include "../helperClasses/Button.h"
 
 #include <vector>
 
-class LevelOne : public GameState {
+class LevelOne : public GenericLevel {
 public:
 	static const int LEVEL_WIDTH = 420;
 	static const int LEVEL_HEIGHT = 400;
 
 	LevelOne();
 	virtual ~LevelOne();
-
-	void handleEvents();
-	void logic();
-	void render(SDL_Surface* destination);
 
 	GameState* getNextState();
 
@@ -41,22 +41,7 @@ protected:
 		STATE_GAME
 	};
 
-	void drawScoreboard(SDL_Surface *destination);
-
-	int score;
-
-	int lives;
-	Image scoreboardShip;
-
-	void keepInBounds(GenericEntity *entity);
-	bool checkOutOfBounds(GenericEntity entity);
-
-	PlayerEntity playerShip;
-
-	Image background;
-	int backgroundY;
-
-	std::vector<GenericEnemy> enemies;
+	void spawnEnemies();
 };
 
 #endif /* LEVELONE_H_ */

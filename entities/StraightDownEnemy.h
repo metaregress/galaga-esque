@@ -19,7 +19,7 @@ public:
 	void handleLogic();
 
 protected:
-	static const int SPEED = 3;
+	static const int SPEED = 2;
 };
 
 #endif /* STRAIGHTDOWNENEMY_H_ */

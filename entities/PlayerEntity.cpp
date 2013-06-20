@@ -28,7 +28,15 @@ PlayerEntity::PlayerEntity(int initialX, int initialY){
 	hasDoubleShot = true;
 	hasSpreadShot = true;
 
+	invincibility = false;
+	invincibilityTimer = 0;
+	invincibilityBlinkTimer = 0;
+
 	image.loadImage("playerShip.png");
+
+	shootSound = SoundEffect("high.wav");
+
+	combo = 1;
 }
 
 PlayerEntity::~PlayerEntity() {
@@ -36,7 +44,19 @@ PlayerEntity::~PlayerEntity() {
 }
 
 void PlayerEntity::display(SDL_Surface *destination){
-	image.displayImage(box.x, box.y, destination);
+	if(invincibility){
+		invincibilityBlinkTimer++;
+	}
+	if(invincibility && invincibilityBlinkTimer>=10){
+		image.displayImage(box.x, box.y, destination);
+	}
+	if(invincibility && invincibilityBlinkTimer>=20){
+		invincibilityBlinkTimer=0;
+	}
+	if(!invincibility){
+		image.displayImage(box.x, box.y, destination);
+	}
+
 	for(unsigned int i=0; i<bullets.size(); i++){
 		bullets.at(i).display(destination);
 	}
@@ -91,9 +111,16 @@ int PlayerEntity::handleLogic(){
 	move();
 	if(shooting){
 		shootCooldown++;
-		if(shootCooldown == 5){
+		if(shootCooldown == 15){
 			shootCooldown = 0;
 			shooting = false;
+		}
+	}
+
+	if(invincibility){
+		invincibilityTimer--;
+		if(invincibilityTimer<=0){
+			invincibility = false;
 		}
 	}
 
@@ -126,10 +153,28 @@ void PlayerEntity::shoot(){
 			bullets.push_back(Bullet(box.x+9, box.y-5, 0, -10));
 			bullets.push_back(Bullet(box.x+9, box.y-5, 10, -10));
 		}
+		shootSound.play();
 		shooting = true;
 	}
 }
 
 std::vector<Bullet>* PlayerEntity::getBullets(){
 	return &bullets;
+}
+
+void PlayerEntity::setInvincibility(bool value, int duration){
+	invincibility = value;
+	invincibilityTimer = duration;
+}
+
+bool PlayerEntity::getInvincibility(){
+	return invincibility;
+}
+
+int PlayerEntity::getCombo(){
+	return combo;
+}
+
+void PlayerEntity::setCombo(int amount){
+	combo = amount;
 }

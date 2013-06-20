@@ -16,7 +16,7 @@ Button::~Button() {
 
 }
 
-Button::Button(int x, int y, int width, int height){
+Button::Button(int x, int y, int width, int height, int textSize){
 	box.x = x;
 	box.y = y;
 	box.w = width;
@@ -26,14 +26,14 @@ Button::Button(int x, int y, int width, int height){
 	image = Image();
 }
 
-Button::Button(int x, int y, int width, int height, std::string buttonText){
+Button::Button(int x, int y, int width, int height, std::string buttonText, int textSize){
 	box.x = x;
 	box.y = y;
 	box.w = width;
 	box.h = height;
 
 	char* fontName = "Roboto-Medium.ttf";
-	text = TTFText(buttonText, 28, fontName);
+	text = TTFText(buttonText, textSize, fontName);
 
 	image = Image();
 }

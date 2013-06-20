@@ -15,6 +15,8 @@ Title::Title() {
 	playGame = Button(175, 150, 60, 30, "Play");
 	quitButton = Button(175, 180, 60, 30, "Quit");
 
+//	startSound = Mix_LoadWAV("car-ignition-edit.wav");
+//	Mix_PlayChannel( -1, startSound, 0 );
 }
 
 Title::~Title() {

@@ -10,6 +10,7 @@
 
 #include "GenericEntity.h"
 #include "Bullet.h"
+#include "../helperClasses/SoundEffect.h"
 #include <vector>
 
 class PlayerEntity : public GenericEntity {
@@ -22,6 +23,10 @@ public:
 	int handleLogic();
 	void display(SDL_Surface *destination);
 	std::vector<Bullet>* getBullets();
+	void setInvincibility(bool value, int duration = 60);
+	bool getInvincibility();
+	int getCombo();
+	void setCombo(int amount);
 
 protected:
 	static const int SPEED = 5;
@@ -41,12 +46,20 @@ protected:
 	void cycleShotType();
 	void shoot();
 
+	bool invincibility;
+	int invincibilityTimer;
+	int invincibilityBlinkTimer;
+
+	int combo;
+
 	int xVelocity;
 	int yVelocity;
 
 	bool shooting;
 	int shootCooldown;
 	std::vector<Bullet> bullets;
+
+	SoundEffect shootSound;
 };
 
 #endif /* PLAYERENTITY_H_ */

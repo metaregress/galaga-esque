@@ -17,8 +17,8 @@
 class Button {
 public:
 	Button();
-	Button(int x, int y, int width, int height, std::string buttonText);
-	Button(int x, int y, int width, int height);
+	Button(int x, int y, int width, int height, std::string buttonText, int textSize=28);
+	Button(int x, int y, int width, int height, int textSize=28);
 	virtual ~Button();
 
 	bool handleEvent(SDL_Event event);

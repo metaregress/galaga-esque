@@ -16,6 +16,18 @@ public:
 	virtual ~GenericEnemy();
 
 	virtual void handleLogic() = 0;
+
+	bool damage(int amount);
+
+	int getPointValue();
+	int getMaxHP();
+	int getCurrentHP();
+
+
+protected:
+	int pointValue;
+	int currentHP;
+	int maxHP;
 };
 
 #endif /* GENERICENEMY_H_ */

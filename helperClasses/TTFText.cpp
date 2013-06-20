@@ -22,7 +22,7 @@ TTFText::TTFText(std::string initialText, int textSize, char* fontFile) {
 }
 
 TTFText::~TTFText() {
-
+//	freeResources();
 }
 
 int TTFText::setText(std::string newText){

@@ -15,3 +15,32 @@ GenericEnemy::GenericEnemy() {
 GenericEnemy::~GenericEnemy() {
 	// TODO Auto-generated destructor stub
 }
+
+int GenericEnemy::getPointValue(){
+	return pointValue;
+}
+
+
+/**
+ * Function returns true if the damage was enough to destroy the enemy.
+ */
+bool GenericEnemy::damage(int amount){
+	currentHP -= amount;
+	if(currentHP <= 0){
+		return true;
+	}
+
+	return false;
+
+}
+
+int GenericEnemy::getMaxHP(){
+	return maxHP;
+}
+
+int GenericEnemy::getCurrentHP(){
+	return currentHP;
+}
+
+
+

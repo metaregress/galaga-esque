@@ -16,6 +16,10 @@ StraightDownEnemy::StraightDownEnemy(int initialX, int initialY){
 	GenericEntity::initEntity(initialX, initialY, 20, 20);
 
 	image.loadImage("straightDownEnemy.png");
+
+	pointValue = 10;
+	currentHP = 1;
+	maxHP = 1;
 }
 
 StraightDownEnemy::~StraightDownEnemy() {

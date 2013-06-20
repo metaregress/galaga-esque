@@ -15,6 +15,7 @@
 #include "SDL/SDL.h"
 #include "SDL/SDL_image.h"
 #include "SDL/SDL_ttf.h"
+#include "SDL/SDL_mixer.h"
 #include "Timer.h"
 #include "../states/GameState.h"
 
@@ -49,8 +50,13 @@ class Game {
 	GameState *currentState;
 
 	bool initGraphics();
-	void clearScreen();
+	bool initAudio();
+
 	void cleanUpGraphics();
+	void cleanUpVideo();
+	void cleanUpAudio();
+
+	void clearScreen();
 
 	std::string numberToString( int number);
 	int stringToNumber( std::string theString );

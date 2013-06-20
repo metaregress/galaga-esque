@@ -13,6 +13,7 @@
 Game::Game() {
 	//initialize graphics
 	initGraphics();
+	initAudio();
 }
 
 Game::~Game() {
@@ -63,6 +64,15 @@ bool Game::initGraphics(){
 	return true;
 }
 
+bool Game::initAudio(){
+	//Initialize SDL_mixer
+	if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 ) {
+		return false;
+	}
+
+	return true;
+}
+
 
 int Game::runGame(){
 	//can haz event loop
@@ -95,6 +105,7 @@ int Game::runGame(){
 
 
 	cleanUpGraphics();
+	cleanUpAudio();
 
 	return 1;
 }
@@ -106,6 +117,11 @@ void Game::cleanUpGraphics(){
 	TTF_Quit();
 	//Quit SDL
 	SDL_Quit();
+}
+
+void Game::cleanUpAudio(){
+	//Quit SDL_mixer
+	Mix_CloseAudio();
 }
 
 bool Game::checkCollision( SDL_Rect A, SDL_Rect B ) {
