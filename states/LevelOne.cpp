@@ -47,25 +47,27 @@ GameState* LevelOne::getNextState(){
 
 void LevelOne::spawnEnemies(){
 	if(enemySpawnTimer==10){
-//		enemies.push_back(new StraightDownEnemy(180, 10));
-//		enemies.push_back(new StraightDownEnemy(240, 10));
-		enemies.push_back(new SpiralEnemy(180, 10));
-		enemies.push_back(new SpiralEnemy(240, 10));
+		enemies.push_back(new StraightDownEnemy(210, 10));
 	}
-	if(enemySpawnTimer==30){
+	if(enemySpawnTimer==50){
 		enemies.push_back(new StraightDownEnemy(180, 10));
 		enemies.push_back(new StraightDownEnemy(240, 10));
 	}
-	if(enemySpawnTimer==60){
+	if(enemySpawnTimer==100){
 		enemies.push_back(new StraightDownEnemy(180, 10));
 		enemies.push_back(new StraightDownEnemy(240, 10));
 	}
-	if(enemySpawnTimer==90){
+	if(enemySpawnTimer==120){
 		enemies.push_back(new StraightDownEnemy(140, 10));
-		enemies.push_back(new StraightDownEnemy(280, 10));
+	}
+	if(enemySpawnTimer==125){
+		enemies.push_back(new StraightDownEnemy(160, 10));
+	}
+	if(enemySpawnTimer==130){
+		enemies.push_back(new StraightDownEnemy(180, 10));
 	}
 	if(enemySpawnTimer==180){
-		enemies.push_back(new LevelOneBoss(140, 10));
+		enemies.push_back(new LevelOneBoss(140, 10, LEVEL_WIDTH));
 	}
 	enemySpawnTimer++;
 }

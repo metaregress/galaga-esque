@@ -20,6 +20,8 @@ StraightDownEnemy::StraightDownEnemy(int initialX, int initialY){
 	pointValue = 10;
 	currentHP = 1;
 	maxHP = 1;
+
+	bullets = std::vector<Bullet>();
 }
 
 StraightDownEnemy::~StraightDownEnemy() {

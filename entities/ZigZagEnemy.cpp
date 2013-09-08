@@ -21,6 +21,8 @@ ZigZagEnemy::ZigZagEnemy(int initialX, int initialY){
 	currentHP = 1;
 	maxHP = 1;
 	zigCounter = 0;
+
+	bullets = std::vector<Bullet>();
 }
 
 ZigZagEnemy::~ZigZagEnemy() {

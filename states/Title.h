@@ -13,6 +13,7 @@
 #include "SDL/SDL_mixer.h"
 #include "../helperClasses/TTFText.h"
 #include "../helperClasses/Button.h"
+#include "../helperClasses/SelectionList.h"
 
 class Title : public GameState {
 public:
@@ -36,6 +37,7 @@ protected:
 	TTFText titleText;
 	Button playGame;
 	Button quitButton;
+	SelectionList titleOptions;
 
 	Mix_Chunk *startSound;
 };

@@ -24,6 +24,8 @@ SpiralEnemy::SpiralEnemy(int initialX, int initialY){
 	circleTimer = 0;
 
 	initialDrop = 50;
+
+	bullets = std::vector<Bullet>();
 }
 
 SpiralEnemy::~SpiralEnemy() {

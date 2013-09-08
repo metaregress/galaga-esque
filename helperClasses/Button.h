@@ -28,8 +28,6 @@ public:
 	void displayElements(SDL_Surface* destination);
 	void displayArea(SDL_Surface* destination);
 	SDL_Rect getRect();
-	void setSelected(bool value);
-	bool getSelected();
 
 private:
 	SDL_Rect box;

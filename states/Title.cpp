@@ -15,6 +15,12 @@ Title::Title() {
 	playGame = Button(175, 150, 60, 30, "Play");
 	quitButton = Button(175, 180, 60, 30, "Quit");
 
+	std::vector<std::string> optionText = std::vector<std::string>();
+	optionText.push_back("Pla Gam");
+	optionText.push_back("RUN AWAY");
+
+	titleOptions = SelectionList(optionText, 175, 250, 30, true);
+
 //	startSound = Mix_LoadWAV("car-ignition-edit.wav");
 //	Mix_PlayChannel( -1, startSound, 0 );
 }
@@ -25,12 +31,14 @@ Title::~Title() {
 
 void Title::handleEvents(){
 	while(SDL_PollEvent( &event ) ){
+		titleOptions.handleEvent(event);
 		if(playGame.handleEvent(event)){
 			nextState = STATE_GAME;
 		}
 		else if(quitButton.handleEvent(event)){
 			nextState = STATE_EXIT;
 		}
+
 		if( event.type == SDL_QUIT ){
 			nextState = STATE_EXIT;
 		}
@@ -45,8 +53,8 @@ void Title::render(SDL_Surface* destination){
 	GameState::clearScreen(destination);
 	titleText.displayText(125, 100, destination);
 	playGame.displayElements(destination);
-//	playGame.displayArea(destination);
 	quitButton.displayElements(destination);
+	titleOptions.displayElements(destination);
 }
 
 GameState* Title::getNextState(){

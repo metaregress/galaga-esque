@@ -56,6 +56,7 @@ void GenericLevel::logic(){
 
 		for(unsigned int i=0; i<enemies.size(); i++){
 			SDL_Rect enemyRect = enemies.at(i)->getRect();
+			std::vector<Bullet>* currentEnemyBullets = enemies.at(i)->getBullets();
 			for(unsigned int j=0; j<currentBullets->size(); j++){
 				SDL_Rect bulletRect = currentBullets->at(j).getRect();
 				if(GameState::checkCollision(bulletRect, enemyRect)){
@@ -78,6 +79,25 @@ void GenericLevel::logic(){
 					playerShip.setCombo(0);
 				}
 			}
+
+
+			for(unsigned int i=0; i<currentEnemyBullets->size(); i++){
+				SDL_Rect bulletRect = currentEnemyBullets->at(i).getRect();
+
+				if(checkOutOfBounds(&currentEnemyBullets->at(i))){
+					currentEnemyBullets->erase(currentEnemyBullets->begin() + i);
+				}
+
+				if(GameState::checkCollision(playerShip.getRect(), bulletRect)){
+					lives--;
+					currentEnemyBullets->erase(currentEnemyBullets->begin() + i);
+					playerShip.setInvincibility(true);
+					playerShip.setCombo(0);
+				}
+
+
+			}
+
 		}
 
 		//check if bullets have gone offscreen, and delete them if so

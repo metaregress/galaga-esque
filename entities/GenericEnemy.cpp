@@ -42,5 +42,17 @@ int GenericEnemy::getCurrentHP(){
 	return currentHP;
 }
 
+std::vector<Bullet>* GenericEnemy::getBullets(){
+	return &bullets;
+}
+
+void GenericEnemy::display(SDL_Surface *destination){
+	image.displayImage(box.x, box.y, destination);
+
+	for(unsigned int i=0; i<bullets.size(); i++){
+		bullets.at(i).display(destination);
+	}
+}
+
 
 

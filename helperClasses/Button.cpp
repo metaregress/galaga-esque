@@ -88,11 +88,3 @@ void Button::displayElements(SDL_Surface* destination){
 SDL_Rect Button::getRect(){
 	return box;
 }
-
-void Button::setSelected(bool value){
-	selected = value;
-}
-
-bool Button::getSelected(){
-	return selected;
-}
