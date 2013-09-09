@@ -45,6 +45,14 @@ void SelectionList::setIndex(int index){
 	currentIndex = index;
 }
 
+bool SelectionList::getDisplayFlag(){
+	return displayFlag;
+}
+
+void SelectionList::setDisplayFlag(bool value){
+	displayFlag = value;
+}
+
 int SelectionList::handleEvent(SDL_Event event){
 	if(event.type==SDL_KEYDOWN){
 			if(event.key.keysym.sym==SDLK_UP){
@@ -69,21 +77,22 @@ int SelectionList::handleEvent(SDL_Event event){
 					}
 				}
 			}
-			if(event.key.keysym.sym==SDLK_SPACE){
-				//return that they selected something???
-			}
 
 		}
+
+	return 1;
 }
 
 void SelectionList::displayElements(SDL_Surface* destination){
-	int yOffset = 0;
-	for(uint i=0; i<optionList.size(); i++){
-		if(i==currentIndex){
-			pointerImage.displayText(upperRightX-20, upperRightY + yOffset, destination);
-		}
-		optionList.at(i).displayText(upperRightX, upperRightY + yOffset, destination);
+	if(displayFlag){
+		int yOffset = 0;
+		for(uint i=0; i<optionList.size(); i++){
+			if(i==currentIndex){
+				pointerImage.displayText(upperRightX-20, upperRightY + yOffset, destination);
+			}
+			optionList.at(i).displayText(upperRightX, upperRightY + yOffset, destination);
 
-		yOffset += fontSize + 5;
+			yOffset += fontSize + 5;
+		}
 	}
 }

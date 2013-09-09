@@ -23,6 +23,8 @@ public:
 	void displayElements(SDL_Surface* destination);
 	int getIndex();
 	void setIndex(int index);
+	bool getDisplayFlag();
+	void setDisplayFlag(bool value);
 
 private:
 	int currentIndex;
@@ -30,6 +32,7 @@ private:
 	int upperRightY;
 	int fontSize;
 	bool wrap;
+	bool displayFlag;
 	TTFText pointerImage;
 	std::vector<TTFText> optionList;
 };
